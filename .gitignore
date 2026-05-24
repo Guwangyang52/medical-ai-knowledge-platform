@@ -1,6 +1,7 @@
 # User local space
 user-space/
 _bootstrap_smoke/
+dist/
 my-vault/
 my-skills/
 workspace.code-workspace

@@ -1,5 +1,7 @@
 # Medical AI Knowledge Platform
 
+这是开发者仓库。普通用户请下载 Releases 中的 `MedicalAIKnowledgeWorkspace-v0.1.0.zip` 工作台包。
+
 一个本地优先的医学科研 AI 知识库与执行平台框架。
 
 它的目标不是公开某个人的完整知识库，而是开源一套可复制的系统，让用户下载后能逐步搭建自己的：
@@ -18,49 +20,81 @@ raw 原始资料
 
 ## 这是什么
 
-本项目包含两个核心部分：
+本项目是生成医学科研 AI 知识库工作台的开发者仓库，包含：
 
-- `my-vault/`：Obsidian 知识库，包含 `raw/` 原始资料和 `wiki/` 结构化知识。
-- `execution-platform/`：执行平台，用于知识检索、任务创建、R/Python 运行、结果归档，以及 Codex / Claude Code / MCP 接入。
+- `starter-vault/`：用户工作台的初始 Obsidian 知识库模板。
+- `starter-skills/`：用户可继续扩展的 starter skills。
+- `execution-platform-template/`：用户工作台的执行平台外壳。
+- `platform-core/`：知识检索、任务创建、R/Python runner、归档和 MCP 原型。
+- `bootstrap.ps1` / `bootstrap.py`：开发者或高级用户本地初始化脚本。
+- `tools/build_user_workspace.ps1`：生成普通用户 Release zip 的打包脚本。
 
 它不是云服务、Web App，也不是某个个人知识库的完整公开备份。
 
-## 快速开始
+## 普通用户入口
 
-下载或 clone 本项目后，在项目根目录运行：
+如果你只是想搭建自己的知识库工作台，不建议直接 clone 本开发仓库。
 
-```powershell
-.\bootstrap.ps1
-```
-
-按提示选择本地安装目录，例如：
+请到 GitHub Releases 下载：
 
 ```text
-<YOUR_INSTALL_DIR>
+MedicalAIKnowledgeWorkspace-v0.1.0.zip
 ```
 
-初始化后会生成：
+解压后会看到：
 
 ```text
-<YOUR_INSTALL_DIR>/
+MedicalAIKnowledgeWorkspace/
 ├─ my-vault/
 ├─ execution-platform/
 ├─ my-skills/
-└─ workspace.code-workspace
+├─ workspace.code-workspace
+├─ start.ps1
+└─ README_先打开我.md
 ```
 
 然后：
 
-1. 用 VS Code 打开 `workspace.code-workspace`。
+1. 双击打开 `workspace.code-workspace`。
 2. 用 Obsidian 打开 `my-vault/`。
-3. 让 Codex 或 Claude Code 先阅读：
+3. 先阅读 `README_先打开我.md`。
+4. 让 Codex 或 Claude Code 先阅读：
 
 ```text
 my-vault/CLAUDE.md
 my-vault/AGENTS.md
-execution-platform/CLAUDE.md
 my-vault/wiki/index.md
 ```
+
+## 开发者入口
+
+如果你要修改框架、模板、脚本或参与开发，请 clone 本仓库：
+
+```powershell
+git clone git@github.com:Guwangyang52/medical-ai-knowledge-platform.git
+cd medical-ai-knowledge-platform
+```
+
+开发者可以用 bootstrap 生成本地测试工作台：
+
+```powershell
+.\bootstrap.ps1 D:\MyAIKnowledgePlatform
+```
+
+也可以生成普通用户 Release 包：
+
+```powershell
+.\tools\build_user_workspace.ps1 -Version 0.1.0
+```
+
+生成结果：
+
+```text
+dist/MedicalAIKnowledgeWorkspace/
+dist/MedicalAIKnowledgeWorkspace-v0.1.0.zip
+```
+
+推送 `v*` tag 后，GitHub Actions 会自动构建 zip 并附加到对应 GitHub Release。详见 [发布用户工作台](docs/发布用户工作台.md)。
 
 ## 当前内置示例
 
@@ -193,6 +227,7 @@ MCP 原型工具：
 - [ClaudeCode使用说明](docs/ClaudeCode使用说明.md)
 - [MCP接入说明](docs/MCP接入说明.md)
 - [项目开发指南](docs/项目开发指南_v0.2.md)
+- [发布用户工作台](docs/发布用户工作台.md)
 - [FAQ](docs/FAQ.md)
 
 ## 隐私与开源边界
@@ -228,7 +263,7 @@ MCP 原型工具：
 - 官方 MCP SDK 版实现
 - 更多医学统计和机器学习模板
 - 自动 PDF 解析流水线
-- 自动 GitHub release 流程
+- 更完整的 Release 质量检查
 
 ## License
 

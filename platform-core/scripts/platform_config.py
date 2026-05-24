@@ -93,7 +93,9 @@ def candidate_config_paths() -> list[Path]:
 def load_paths_config() -> dict[str, Any]:
     for path in candidate_config_paths():
         if path.exists():
-            return parse_simple_yaml(path)
+            config = parse_simple_yaml(path)
+            config["_config_dir"] = str(path.parent)
+            return config
     return {}
 
 
@@ -105,7 +107,13 @@ def get_path(config: dict[str, Any], dotted_key: str, fallback: Path) -> Path:
         current = current[part]
     if not current:
         return fallback
-    return Path(str(current))
+    resolved = Path(str(current))
+    if resolved.is_absolute():
+        return resolved
+    config_dir = config.get("_config_dir", "")
+    if config_dir:
+        return (Path(str(config_dir)) / resolved).resolve()
+    return resolved
 
 
 def default_analyses_dir() -> Path:
