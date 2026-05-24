@@ -1,0 +1,13 @@
+id: continuous-meta-analysis
+title: Continuous outcome meta-analysis
+version: 0.1.0
+status: starter
+language: R
+main_template: templates/continuous_meta_analysis.R
+inputs:
+  - data/sample_continuous_meta.csv
+outputs:
+  - output/meta_summary.txt
+  - output/result_table.csv
+  - output/forest_plot.png
+

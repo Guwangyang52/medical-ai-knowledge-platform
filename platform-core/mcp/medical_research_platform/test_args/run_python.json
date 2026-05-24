@@ -1,0 +1,4 @@
+{
+  "task_dir": "projects/python-demo",
+  "script": "src/analysis.py"
+}

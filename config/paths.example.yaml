@@ -1,0 +1,19 @@
+platform_root: "<YOUR_INSTALL_DIR>"
+vault_path: "<YOUR_INSTALL_DIR>\\my-vault"
+execution_platform: "<YOUR_INSTALL_DIR>\\execution-platform"
+
+knowledge:
+  index: "<YOUR_INSTALL_DIR>\\my-vault\\wiki\\index.md"
+  analyses: "<YOUR_INSTALL_DIR>\\my-vault\\wiki\\analyses"
+  concepts: "<YOUR_INSTALL_DIR>\\my-vault\\wiki\\concepts"
+  sources: "<YOUR_INSTALL_DIR>\\my-vault\\wiki\\sources"
+
+execution:
+  projects: "<YOUR_INSTALL_DIR>\\execution-platform\\projects"
+  outputs: "<YOUR_INSTALL_DIR>\\execution-platform\\outputs"
+  logs: "<YOUR_INSTALL_DIR>\\execution-platform\\logs"
+
+runtime:
+  python_path: ""
+  rscript_path: "Rscript"
+

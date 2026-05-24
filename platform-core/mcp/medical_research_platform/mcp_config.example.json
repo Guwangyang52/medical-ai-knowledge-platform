@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "medical-research-platform": {
+      "command": "python",
+      "args": [
+        "<YOUR_INSTALL_DIR>\\execution-platform\\platform-core\\mcp\\medical_research_platform\\medical_research_platform_server.py"
+      ],
+      "env": {
+        "MAKP_PATHS_CONFIG": "<YOUR_INSTALL_DIR>\\execution-platform\\config\\paths.yaml"
+      }
+    }
+  }
+}
+

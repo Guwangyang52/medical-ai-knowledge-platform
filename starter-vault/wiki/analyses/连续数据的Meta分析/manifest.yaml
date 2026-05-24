@@ -1,0 +1,106 @@
+id: meta_continuous_data
+title: 连续结局变量 Meta 分析演示模板
+type: analysis_template
+version: 1.0.0
+status: complete
+reuse_level: high
+
+problem_type: Meta分析
+methods:
+  - metacont
+  - mean_difference
+  - standardized_mean_difference
+  - fixed_effect_model
+  - random_effect_model
+  - publication_bias
+  - sensitivity_analysis
+  - subgroup_analysis
+language: R
+main_code: code.R
+packages:
+  - meta
+  - readxl
+
+source:
+  readme: README.md
+  raw_project: raw/analyses/连续数据的Meta分析
+  example_data:
+    - data/sample_continuous_meta.csv
+  example_outputs:
+    - output/README.md
+  data_source: synthetic_demo
+
+input_requirements:
+  data_format:
+    - csv
+    - xlsx
+  required_columns:
+    - First_author
+    - Year
+    - n.e
+    - mean.e
+    - sd.e
+    - n.c
+    - mean.c
+    - sd.c
+  optional_columns:
+    - Subgroups
+  assumptions:
+    - 结局变量为连续变量
+    - 实验组与对照组相互独立
+    - 均数和标准差的单位在各研究间一致
+    - 标准差必须大于0
+
+outputs:
+  current_code_behavior:
+    - code.R 会读取 data/sample_continuous_meta.csv
+    - 运行后会将图、表和文本摘要写入任务 output 目录
+  expected_files:
+    - output/forest_plot.png
+    - output/funnel_plot.png
+    - output/meta_summary.txt
+    - output/result_table.csv
+  interpretation_targets:
+    - pooled_effect
+    - confidence_interval
+    - heterogeneity_i2
+    - publication_bias
+    - sensitivity_stability
+    - subgroup_difference
+
+ai_usage:
+  retrieval_keywords:
+    - 连续数据Meta分析
+    - 连续变量Meta分析
+    - metacont
+    - MD
+    - SMD
+    - 均数
+    - 标准差
+    - 森林图
+  adaptation_rules:
+    - 新数据必须先检查 required_columns
+    - 单位相同时优先使用 MD
+    - 单位不同时改用 SMD
+    - I2 较高时优先解释随机效应模型并考虑亚组或敏感性分析
+    - 运行新任务时应复制 code.R 到执行平台 projects 目录后再改写
+  do_not:
+    - 不直接覆盖示例 data 目录
+    - 不在知识库模板目录中运行临时任务
+
+links:
+  concepts:
+    - Meta分析
+  related_templates:
+    - 二分类数据的Meta分析
+    - 单个率的Meta分析
+    - 效应值的Meta分析
+
+tags:
+  - meta分析
+  - continuous-outcome
+  - MD
+  - SMD
+  - R
+
+updated: 2026-05-23

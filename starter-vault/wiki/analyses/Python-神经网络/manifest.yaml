@@ -1,0 +1,94 @@
+id: python_neural_network
+title: Python-神经网络
+type: analysis_template
+version: 1.0.0
+status: complete
+reuse_level: medium
+
+problem_type: 机器学习-分类预测
+methods:
+  - neural_network
+  - multilayer_perceptron
+  - train_test_split
+  - binary_classification
+language: Python
+main_code: code.py
+packages: []
+
+source:
+  readme: README.md
+  method_note: 方法说明.md
+  raw_project: raw/analyses/《机器学习及Python应用》陈强-神经网络
+  example_data:
+    - data/README.md
+  example_outputs:
+    - output/README.md
+  data_source: synthetic_demo
+
+input_requirements:
+  data_format:
+    - csv
+    - synthetic
+  required_columns:
+    - feature_columns
+    - target_column
+  optional_columns:
+    - sample_id
+  assumptions:
+    - 分类结局变量已明确定义
+    - 特征变量可转为数值
+    - 测试集不参与模型训练或调参
+
+outputs:
+  current_code_behavior:
+    - code.py 使用纯 Python 合成二分类数据
+    - 运行后写出准确率、混淆矩阵、训练损失和模型参数
+  expected_files:
+    - output/metrics.json
+    - output/confusion_matrix.csv
+    - output/training_loss.csv
+  interpretation_targets:
+    - accuracy
+    - confusion_matrix
+    - training_loss
+
+ai_usage:
+  retrieval_keywords:
+    - Python
+    - 神经网络
+    - 人工神经网络
+    - MLP
+    - MLPClassifier
+    - 机器学习
+    - 分类预测
+    - breast cancer
+    - 纯Python
+  adaptation_rules:
+    - 新任务必须先确认结局变量和任务类型
+    - 如果用户数据是连续结局，应改用 MLPRegressor 或其他回归模型
+    - 医学预测任务应额外报告混淆矩阵、敏感度、特异度或 AUC
+    - 如果加入标准化步骤，必须避免数据泄漏
+    - 如果使用 TensorFlow/Keras，应单独记录版本和运行环境
+  do_not:
+    - 不要提交原书 PDF、PPT 或配套代码全文
+    - 不要把真实患者数据提交到 GitHub
+    - 不要在 wiki 模板目录中运行临时任务
+
+links:
+  concepts:
+    - 人工神经网络
+    - 机器学习
+  related_templates:
+    - Python表格数据摘要
+    - 随机森林
+    - 支持向量机
+    - 逻辑回归
+
+tags:
+  - Python
+  - machine-learning
+  - neural-network
+  - classification
+  - pure-python
+
+updated: 2026-05-24

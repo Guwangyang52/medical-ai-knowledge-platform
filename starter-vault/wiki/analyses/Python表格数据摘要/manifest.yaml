@@ -1,0 +1,86 @@
+id: python_table_summary
+title: Python 表格数据摘要
+type: analysis_template
+version: 1.0.0
+status: complete
+reuse_level: medium
+
+problem_type: 数据整理与描述性统计
+methods:
+  - csv_reading
+  - descriptive_statistics
+  - numeric_column_summary
+language: Python
+main_code: code.py
+packages: []
+
+source:
+  readme: README.md
+  raw_project: raw/analyses/Python表格数据摘要
+  example_data:
+    - data/sample_table.csv
+  example_outputs:
+    - output/README.md
+  data_source: synthetic_demo
+
+input_requirements:
+  data_format:
+    - csv
+    - tsv
+    - xlsx
+  required_columns:
+    - at_least_one_header_row
+  optional_columns:
+    - numeric_columns
+    - categorical_columns
+  assumptions:
+    - 第一行是变量名
+    - 每一行是一个样本或观测
+    - 数值列可以被转换为 float
+
+outputs:
+  current_code_behavior:
+    - code.py 会读取 data/sample_table.csv
+    - 运行后会把 JSON 摘要写入 output/summary.json
+  expected_files:
+    - output/summary.json
+  interpretation_targets:
+    - row_count
+    - column_names
+    - numeric_column_mean_min_max
+
+ai_usage:
+  retrieval_keywords:
+    - Python
+    - python脚本
+    - 表格数据
+    - CSV
+    - 描述性统计
+    - 数据摘要
+    - 机器学习前处理
+  adaptation_rules:
+    - 新任务必须先确认输入数据文件名和列名
+    - 如果用户上传 requirements.txt，应优先在任务目录中保留依赖说明
+    - 如果原始项目是 notebook，应先整理为可重复运行的 .py 脚本
+    - 运行任务时应使用 run_python_task.py，而不是在 wiki 模板目录中直接运行
+  do_not:
+    - 不要把真实患者数据提交到 GitHub
+    - 不要在 wiki 模板目录中写入临时输出
+    - 不要把用户本机绝对路径写入模板
+
+links:
+  concepts:
+    - 数据清洗
+    - 描述性统计
+  related_templates:
+    - 机器学习分类建模
+    - 生存分析
+    - 回归分析
+
+tags:
+  - Python
+  - csv
+  - descriptive-statistics
+  - data-cleaning
+
+updated: 2026-05-24

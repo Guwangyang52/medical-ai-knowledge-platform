@@ -1,0 +1,16 @@
+name: Medical AI Knowledge Platform
+version: 0.1.0
+language: zh-CN
+
+privacy:
+  commit_real_data: false
+  commit_private_papers: false
+  commit_local_paths: false
+
+workflow:
+  - search_knowledge_base
+  - create_analysis_task
+  - run_analysis
+  - archive_result
+  - promote_reusable_knowledge
+

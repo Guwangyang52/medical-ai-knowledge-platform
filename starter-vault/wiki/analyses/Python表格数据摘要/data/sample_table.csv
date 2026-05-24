@@ -1,0 +1,6 @@
+patient_id,age,bmi,group,outcome_score
+P001,45,23.4,control,78
+P002,52,26.1,treatment,84
+P003,38,22.8,control,73
+P004,61,28.3,treatment,88
+P005,49,24.9,treatment,81

@@ -1,0 +1,89 @@
+id: meta_network_bayesian
+title: 网状Meta分析（NMA）
+type: analysis_template
+version: 1.0.0
+status: complete
+reuse_level: high
+problem_type: Meta分析
+methods:
+  - network_meta_analysis
+  - bayesian_nma
+  - bugsnet
+  - sucra
+  - mcmc
+language: R
+main_code: code.R
+packages:
+  - BUGSnet
+  - dplyr
+  - tidyr
+  - ggplot2
+  - gridExtra
+source:
+  readme: README.md
+  raw_project: raw/analyses/网状Meta分析
+  example_data:
+    - data/nma_sample_data.csv
+  example_outputs:
+    - output/README.md
+  data_source: 向虹等(2022) 中国循证医学杂志
+input_requirements:
+  data_format:
+    - csv
+  required_columns:
+    - Study
+    - Treatment
+    - Number.of.patients
+  optional_columns:
+    - Number.of.remissions
+    - Number.of.relapses
+    - Number.of.adverse.event.related.withdrawals
+    - Cumulative.dose.of.steroid_Mean
+    - Cumulative.dose.of.steroid_SD
+  assumptions:
+    - 至少包含三种可比较干预
+    - 网络连通性需要满足
+    - 直接与间接证据需具备临床可交换性
+outputs:
+  current_code_behavior:
+    - code.R 使用 BUGSnet 进行贝叶斯网状 Meta 分析
+    - 示例 output 目录只保留输出说明；实际运行输出写入任务目录
+  expected_files:
+    - output/network_plot.png
+    - output/sucra_rankings.csv
+    - output/league_table.csv
+  interpretation_targets:
+    - network_plot
+    - league_table
+    - sucra_ranking
+    - convergence
+    - inconsistency
+ai_usage:
+  retrieval_keywords:
+    - 网状Meta分析
+    - NMA
+    - 贝叶斯Meta分析
+    - BUGSnet
+    - SUCRA
+    - MCMC
+  adaptation_rules:
+    - 先检查干预网络是否连通
+    - 报告排序时必须说明不确定性
+    - 检查 MCMC 收敛情况
+  do_not:
+    - 不在网络不连通时强行排序
+links:
+  concepts:
+    - Meta分析
+    - 贝叶斯分析
+  related_templates:
+    - 二分类数据的Meta分析
+    - 连续数据的Meta分析
+tags:
+  - meta分析
+  - NMA
+  - Bayesian
+  - BUGSnet
+  - SUCRA
+  - R
+updated: 2026-05-23

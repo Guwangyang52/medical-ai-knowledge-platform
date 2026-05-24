@@ -1,0 +1,43 @@
+# User local space
+user-space/
+_bootstrap_smoke/
+my-vault/
+my-skills/
+workspace.code-workspace
+
+# Local execution outputs
+execution-platform/projects/
+execution-platform/logs/
+execution-platform/outputs/
+
+# Local config
+config/paths.yaml
+**/paths.yaml
+.env
+
+# Private or large data files
+*.xlsx
+*.xls
+*.csv
+*.tsv
+*.sav
+*.dta
+*.rds
+*.RData
+*.pdf
+*.docx
+*.pptx
+
+# Allow synthetic examples committed with the framework
+!starter-vault/**/*.csv
+!starter-skills/**/*.csv
+!examples/**/*.csv
+
+# Runtime
+__pycache__/
+.pytest_cache/
+.venv/
+renv/library/
+node_modules/
+.Rproj.user/
+.Rhistory
